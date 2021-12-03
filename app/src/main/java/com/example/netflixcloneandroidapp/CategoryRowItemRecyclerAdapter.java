@@ -1,5 +1,7 @@
 package com.example.netflixcloneandroidapp;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -7,10 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class CategoryRowItemRecyclerAdapter extends RecyclerView.Adapter<CategoryRowItemRecyclerAdapter.CategoryRowItemRecyclerViewHolder>{
+
+    Context context;
+
     @NonNull
     @Override
     public CategoryRowItemRecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+
+        View view = LayoutInflater.from(context).inflate(R.layout.category_row_items, parent, false);
+        return new CategoryRowItemRecyclerViewHolder(view);
+
     }
 
     @Override
