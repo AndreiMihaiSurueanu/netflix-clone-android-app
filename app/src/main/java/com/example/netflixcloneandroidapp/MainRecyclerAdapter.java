@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,17 +32,23 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MainRecyclerViewHolder holder, int position) {
-
+        holder.categoryTitle.setText(listOfCategories.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listOfCategories.size();
     }
 
     public class MainRecyclerViewHolder extends RecyclerView.ViewHolder {
+
+        TextView categoryTitle;
+
         public MainRecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            categoryTitle = itemView.findViewById(R.id.category_title);
+
         }
     }
 }
