@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NetflixCloneAndroidApp</string>
+    <string name="category_title">Category Title Placeholder</string>
 </resources>
