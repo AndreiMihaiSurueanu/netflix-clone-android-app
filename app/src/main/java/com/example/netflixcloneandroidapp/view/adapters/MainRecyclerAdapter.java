@@ -1,4 +1,4 @@
-package com.example.netflixcloneandroidapp;
+package com.example.netflixcloneandroidapp.view.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.netflixcloneandroidapp.R;
+import com.example.netflixcloneandroidapp.model.entities.Movie;
 
 import java.util.List;
 

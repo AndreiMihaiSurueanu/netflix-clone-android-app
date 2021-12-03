@@ -1,4 +1,4 @@
-package com.example.netflixcloneandroidapp;
+package com.example.netflixcloneandroidapp.model.entities;
 
 import java.util.Arrays;
 

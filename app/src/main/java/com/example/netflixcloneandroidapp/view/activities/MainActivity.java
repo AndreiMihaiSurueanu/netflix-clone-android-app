@@ -1,10 +1,13 @@
-package com.example.netflixcloneandroidapp;
+package com.example.netflixcloneandroidapp.view.activities;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.netflixcloneandroidapp.view.adapters.MainRecyclerAdapter;
+import com.example.netflixcloneandroidapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
