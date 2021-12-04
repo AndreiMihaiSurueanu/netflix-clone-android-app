@@ -4,6 +4,8 @@ import com.example.netflixcloneandroidapp.model.entities.Movie;
 import com.example.netflixcloneandroidapp.model.entities.MovieRequestResponse;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,10 +43,14 @@ public class RetrofitClient {
 
     public List<Movie> loadNewReleases() throws IOException {
 
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime now = LocalDateTime.now();
+
+
         Map<String, String> parameters = new HashMap<>();
         parameters.put("api_key", ApiConfig.API_KEY);
         parameters.put("sort_by", "release_date.desc");
-        parameters.put("primary_release_date.lte", "2021-12-04");
+        parameters.put("primary_release_date.lte", now.toString());
 
         Response response = tmdbApiInterface.discoverMovieCall(parameters).execute();
         return ((MovieRequestResponse) response.body()).getMovies();
