@@ -40,7 +40,8 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     @Override
     public void onBindViewHolder(@NonNull MainRecyclerViewHolder holder, int position) {
         holder.categoryTitle.setText(listOfCategories.get(position));
-        setCatItemRecycler(holder.categoryRowRecycler, movieList);
+        if(listOfCategories.get(position) == "Trending Now")
+            setCatItemRecycler(holder.categoryRowRecycler, movieList);
     }
 
     @Override
