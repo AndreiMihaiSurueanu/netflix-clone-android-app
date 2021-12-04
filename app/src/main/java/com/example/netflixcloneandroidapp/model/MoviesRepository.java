@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.netflixcloneandroidapp.model.entities.Movie;
 import com.example.netflixcloneandroidapp.model.web_services.RetrofitClient;
 
+import java.io.IOException;
 import java.util.List;
 
 public class MoviesRepository {
@@ -27,8 +28,11 @@ public class MoviesRepository {
         return instance;
     }
 
+    public void loadTrendingNow() throws IOException {
+        trendingNowMovies.postValue(retrofitClient.loadTrendingNow());
+    }
+
     public LiveData<List<Movie>> getTrendingNow() {
-        trendingNowMovies.setValue(retrofitClient.getTrendingNow());
         return trendingNowMovies;
     }
 
