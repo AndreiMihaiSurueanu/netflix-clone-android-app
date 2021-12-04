@@ -1,7 +1,9 @@
 package com.example.netflixcloneandroidapp.viewmodel;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.netflixcloneandroidapp.model.MoviesRepository;
 import com.example.netflixcloneandroidapp.model.entities.Movie;
@@ -12,12 +14,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class MainViewModel extends ViewModel {
+public class MainViewModel extends AndroidViewModel {
 
-    private MoviesRepository moviesRepository;
+    private final MoviesRepository moviesRepository;
     private final ExecutorService executorService;
 
-    public MainViewModel() {
+    public MainViewModel(Application app) {
+        super(app);
         this.moviesRepository = MoviesRepository.getInstance();
         executorService = Executors.newCachedThreadPool();
     }
