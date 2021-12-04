@@ -47,6 +47,11 @@ public class CategoryRowItemRecyclerAdapter extends RecyclerView.Adapter<Categor
         return movieList.size();
     }
 
+    public void setMovieList(List<Movie> movieList) {
+        this.movieList = movieList;
+        notifyDataSetChanged();
+    }
+
     public class CategoryRowItemRecyclerViewHolder extends RecyclerView.ViewHolder {
 
         ImageView itemImage;
