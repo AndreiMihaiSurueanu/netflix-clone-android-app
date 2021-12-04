@@ -62,7 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
         ObserveTrendingNow();
 
+        ObserveDiscoverMovie();
+
         mainViewModel.loadTrendingNow();
+
+        mainViewModel.loadDiscoverMovie();
 
     }
 
@@ -72,7 +76,19 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(List<Movie> trendingNowMovies) {
                 // Observing for any data change
                 if (trendingNowMovies != null) {
-                    mainRecyclerAdapter.setMovieList(trendingNowMovies);
+                    mainRecyclerAdapter.setTrendingNowList(trendingNowMovies);
+                }
+            }
+        });
+    }
+
+    private void ObserveDiscoverMovie() {
+        mainViewModel.getDiscoverMovie().observe(this, new Observer<List<Movie>>(){
+            @Override
+            public void onChanged(List<Movie> discoverMovies) {
+                // Observing for any data change
+                if (discoverMovies != null) {
+                    mainRecyclerAdapter.setDiscoverMovieList(discoverMovies);
                 }
             }
         });
@@ -83,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         mainRecyclerView = findViewById(R.id.main_recycler);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         mainRecyclerView.setLayoutManager(layoutManager);
-        mainRecyclerAdapter = new MainRecyclerAdapter(this, allCategoryList, new ArrayList<>());
+        mainRecyclerAdapter = new MainRecyclerAdapter(this, allCategoryList);
         mainRecyclerView.setAdapter(mainRecyclerAdapter);
 
     }

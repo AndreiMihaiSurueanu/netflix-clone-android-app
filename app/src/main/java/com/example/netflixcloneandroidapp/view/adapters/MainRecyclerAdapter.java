@@ -13,19 +13,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.netflixcloneandroidapp.R;
 import com.example.netflixcloneandroidapp.model.entities.Movie;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapter.MainRecyclerViewHolder>{
 
     Context context;
-    List<Movie> movieList;
+    List<Movie> trendingNowList = new ArrayList<>();
+    List<Movie> discoverMovieList = new ArrayList<>();
     List<String> listOfCategories;
     CategoryRowItemRecyclerAdapter itemRecyclerAdapter;
 
-    public MainRecyclerAdapter(Context context, List<String> listOfCategories, List<Movie> movieList) {
+    public MainRecyclerAdapter(Context context, List<String> listOfCategories) {
         this.context = context;
         this.listOfCategories = listOfCategories;
-        this.movieList = movieList;
     }
 
     @NonNull
@@ -40,8 +41,10 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     @Override
     public void onBindViewHolder(@NonNull MainRecyclerViewHolder holder, int position) {
         holder.categoryTitle.setText(listOfCategories.get(position));
+        if(listOfCategories.get(position) == "New Releases")
+            setCatItemRecycler(holder.categoryRowRecycler, discoverMovieList);
         if(listOfCategories.get(position) == "Trending Now")
-            setCatItemRecycler(holder.categoryRowRecycler, movieList);
+            setCatItemRecycler(holder.categoryRowRecycler, trendingNowList);
     }
 
     @Override
@@ -49,10 +52,17 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
         return listOfCategories.size();
     }
 
-    public void setMovieList(List<Movie> movieList) {
-        this.movieList = movieList;
+    public void setTrendingNowList(List<Movie> trendingNowList) {
+        this.trendingNowList = trendingNowList;
         if (itemRecyclerAdapter != null)
-            itemRecyclerAdapter.setMovieList(movieList);
+            itemRecyclerAdapter.setMovieList(trendingNowList);
+        notifyDataSetChanged();
+    }
+
+    public void setDiscoverMovieList(List<Movie> discoverMovieList) {
+        this.discoverMovieList = discoverMovieList;
+        if (itemRecyclerAdapter != null)
+            itemRecyclerAdapter.setMovieList(discoverMovieList);
         notifyDataSetChanged();
     }
 

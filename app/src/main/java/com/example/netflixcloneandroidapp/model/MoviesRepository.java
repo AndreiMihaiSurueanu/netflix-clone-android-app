@@ -15,10 +15,12 @@ public class MoviesRepository {
 
     private final RetrofitClient retrofitClient;
     private final MutableLiveData<List<Movie>> trendingNowMovies;
+    private final MutableLiveData<List<Movie>> discoverMovies;
 
     MoviesRepository() {
         retrofitClient = RetrofitClient.getRetrofitClientInstance();
         trendingNowMovies = new MutableLiveData<>();
+        discoverMovies = new MutableLiveData<>();
     }
 
     public static MoviesRepository getInstance(){
@@ -32,8 +34,16 @@ public class MoviesRepository {
         trendingNowMovies.postValue(retrofitClient.loadTrendingNow());
     }
 
+    public void loadDiscoverMovie() throws IOException {
+        discoverMovies.postValue(retrofitClient.loadDiscoverMovie());
+    }
+
     public LiveData<List<Movie>> getTrendingNow() {
         return trendingNowMovies;
+    }
+
+    public LiveData<List<Movie>> getDiscoverMovie() {
+        return discoverMovies;
     }
 
 }

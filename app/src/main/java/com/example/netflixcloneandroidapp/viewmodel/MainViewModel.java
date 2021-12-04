@@ -42,4 +42,21 @@ public class MainViewModel extends AndroidViewModel {
         return moviesRepository.getTrendingNow();
     }
 
+    public void loadDiscoverMovie() {
+        final Future future = executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    moviesRepository.loadDiscoverMovie();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public LiveData<List<Movie>> getDiscoverMovie() {
+        return moviesRepository.getDiscoverMovie();
+    }
+
 }
