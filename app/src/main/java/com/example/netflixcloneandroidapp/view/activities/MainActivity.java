@@ -58,30 +58,32 @@ public class MainActivity extends AppCompatActivity {
         listOfCategories.add("Irreverent Comedies");
         listOfCategories.add("Irreverent Movies");
 
-        ObserveTrendingNow(listOfCategories);
+        setMainCategoryRecycler(listOfCategories);
 
-//        setMainCategoryRecycler(listOfCategories);
+        ObserveTrendingNow();
+
+        mainViewModel.loadTrendingNow();
 
     }
 
-    private void ObserveTrendingNow(List<String> listOfCategories) {
+    private void ObserveTrendingNow() {
         mainViewModel.getTrendingNow().observe(this, new Observer<List<Movie>>(){
             @Override
             public void onChanged(List<Movie> trendingNowMovies) {
                 // Observing for any data change
                 if (trendingNowMovies != null) {
-                    setMainCategoryRecycler(listOfCategories, trendingNowMovies);
+                    mainRecyclerAdapter.setMovieList(trendingNowMovies);
                 }
             }
         });
     }
 
-    private void setMainCategoryRecycler(List<String> allCategoryList, List<Movie> trendingNowMovies){
+    private void setMainCategoryRecycler(List<String> allCategoryList){
 
         mainRecyclerView = findViewById(R.id.main_recycler);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         mainRecyclerView.setLayoutManager(layoutManager);
-        mainRecyclerAdapter = new MainRecyclerAdapter(this, allCategoryList, trendingNowMovies);
+        mainRecyclerAdapter = new MainRecyclerAdapter(this, allCategoryList, new ArrayList<>());
         mainRecyclerView.setAdapter(mainRecyclerAdapter);
 
     }
