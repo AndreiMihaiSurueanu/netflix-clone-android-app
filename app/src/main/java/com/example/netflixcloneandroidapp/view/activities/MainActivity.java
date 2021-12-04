@@ -61,12 +61,10 @@ public class MainActivity extends AppCompatActivity {
         setMainCategoryRecycler(listOfCategories);
 
         ObserveTrendingNow();
+        ObserveNewReleases();
+        ObserveComedyMovies();
 
-        ObserveDiscoverMovie();
-
-        mainViewModel.loadTrendingNow();
-
-        mainViewModel.loadDiscoverMovie();
+        mainViewModel.loadMovies();
 
     }
 
@@ -82,13 +80,25 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void ObserveDiscoverMovie() {
-        mainViewModel.getDiscoverMovie().observe(this, new Observer<List<Movie>>(){
+    private void ObserveNewReleases() {
+        mainViewModel.getNewReleases().observe(this, new Observer<List<Movie>>(){
             @Override
-            public void onChanged(List<Movie> discoverMovies) {
+            public void onChanged(List<Movie> newReleasesMovies) {
                 // Observing for any data change
-                if (discoverMovies != null) {
-                    mainRecyclerAdapter.setDiscoverMovieList(discoverMovies);
+                if (newReleasesMovies != null) {
+                    mainRecyclerAdapter.setNewReleasesMovieList(newReleasesMovies);
+                }
+            }
+        });
+    }
+
+    private void ObserveComedyMovies() {
+        mainViewModel.getComedyMovies().observe(this, new Observer<List<Movie>>(){
+            @Override
+            public void onChanged(List<Movie> comedyMovies) {
+                // Observing for any data change
+                if (comedyMovies != null) {
+                    mainRecyclerAdapter.setComedyMovieList(comedyMovies);
                 }
             }
         });

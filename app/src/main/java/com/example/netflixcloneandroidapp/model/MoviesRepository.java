@@ -15,12 +15,14 @@ public class MoviesRepository {
 
     private final RetrofitClient retrofitClient;
     private final MutableLiveData<List<Movie>> trendingNowMovies;
-    private final MutableLiveData<List<Movie>> discoverMovies;
+    private final MutableLiveData<List<Movie>> newReleasesMovies;
+    private final MutableLiveData<List<Movie>> comedyMovies;
 
     MoviesRepository() {
         retrofitClient = RetrofitClient.getRetrofitClientInstance();
         trendingNowMovies = new MutableLiveData<>();
-        discoverMovies = new MutableLiveData<>();
+        newReleasesMovies = new MutableLiveData<>();
+        comedyMovies = new MutableLiveData<>();
     }
 
     public static MoviesRepository getInstance(){
@@ -34,16 +36,24 @@ public class MoviesRepository {
         trendingNowMovies.postValue(retrofitClient.loadTrendingNow());
     }
 
-    public void loadDiscoverMovie() throws IOException {
-        discoverMovies.postValue(retrofitClient.loadDiscoverMovie());
-    }
-
     public LiveData<List<Movie>> getTrendingNow() {
         return trendingNowMovies;
     }
 
-    public LiveData<List<Movie>> getDiscoverMovie() {
-        return discoverMovies;
+    public void loadNewReleases() throws IOException {
+        newReleasesMovies.postValue(retrofitClient.loadNewReleases());
+    }
+
+    public LiveData<List<Movie>> getNewReleases() {
+        return newReleasesMovies;
+    }
+
+    public void loadComedyMovies() throws IOException {
+        comedyMovies.postValue(retrofitClient.loadComedyMovies());
+    }
+
+    public LiveData<List<Movie>> getComedyMovies() {
+        return comedyMovies;
     }
 
 }

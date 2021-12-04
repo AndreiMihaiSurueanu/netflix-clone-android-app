@@ -38,12 +38,28 @@ public class RetrofitClient {
         return ((TrendingNow) response.body()).getMovies();
 
     }
-    public List<Movie> loadDiscoverMovie() throws IOException {
+
+    public List<Movie> loadNewReleases() throws IOException {
 
         Map<String, String> parameters = new HashMap<>();
         parameters.put("api_key", ApiConfig.API_KEY);
         parameters.put("sort_by", "release_date.desc");
         parameters.put("primary_release_date.lte", "2021-12-04");
+
+        Response response = tmdbApiInterface.discoverMovieCall(parameters).execute();
+        return ((TrendingNow) response.body()).getMovies();
+
+    }
+
+    public List<Movie> loadComedyMovies() throws IOException {
+
+        // Genre
+        // "id": 35,
+        // "name": "Comedy"
+
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("api_key", ApiConfig.API_KEY);
+        parameters.put("with_genres", "35");
 
         Response response = tmdbApiInterface.discoverMovieCall(parameters).execute();
         return ((TrendingNow) response.body()).getMovies();

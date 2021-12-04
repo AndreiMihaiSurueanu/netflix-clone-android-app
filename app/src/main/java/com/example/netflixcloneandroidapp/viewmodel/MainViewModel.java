@@ -25,12 +25,14 @@ public class MainViewModel extends AndroidViewModel {
         executorService = Executors.newCachedThreadPool();
     }
 
-    public void loadTrendingNow() {
+    public void loadMovies() {
         final Future future = executorService.submit(new Runnable() {
             @Override
             public void run() {
                 try {
                     moviesRepository.loadTrendingNow();
+                    moviesRepository.loadNewReleases();
+                    moviesRepository.loadComedyMovies();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -42,21 +44,12 @@ public class MainViewModel extends AndroidViewModel {
         return moviesRepository.getTrendingNow();
     }
 
-    public void loadDiscoverMovie() {
-        final Future future = executorService.submit(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    moviesRepository.loadDiscoverMovie();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+    public LiveData<List<Movie>> getNewReleases() {
+        return moviesRepository.getNewReleases();
     }
 
-    public LiveData<List<Movie>> getDiscoverMovie() {
-        return moviesRepository.getDiscoverMovie();
+    public LiveData<List<Movie>> getComedyMovies() {
+        return moviesRepository.getComedyMovies();
     }
 
 }

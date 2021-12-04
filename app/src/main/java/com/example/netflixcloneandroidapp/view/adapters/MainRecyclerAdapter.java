@@ -20,7 +20,8 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
 
     Context context;
     List<Movie> trendingNowList = new ArrayList<>();
-    List<Movie> discoverMovieList = new ArrayList<>();
+    List<Movie> newReleasesMovieList = new ArrayList<>();
+    List<Movie> comedyMovieList = new ArrayList<>();
     List<String> listOfCategories;
     CategoryRowItemRecyclerAdapter itemRecyclerAdapter;
 
@@ -42,9 +43,11 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     public void onBindViewHolder(@NonNull MainRecyclerViewHolder holder, int position) {
         holder.categoryTitle.setText(listOfCategories.get(position));
         if(listOfCategories.get(position) == "New Releases")
-            setCatItemRecycler(holder.categoryRowRecycler, discoverMovieList);
+            setCatItemRecycler(holder.categoryRowRecycler, newReleasesMovieList);
         if(listOfCategories.get(position) == "Trending Now")
             setCatItemRecycler(holder.categoryRowRecycler, trendingNowList);
+        if(listOfCategories.get(position) == "Comedies")
+            setCatItemRecycler(holder.categoryRowRecycler, comedyMovieList);
     }
 
     @Override
@@ -59,10 +62,17 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
         notifyDataSetChanged();
     }
 
-    public void setDiscoverMovieList(List<Movie> discoverMovieList) {
-        this.discoverMovieList = discoverMovieList;
+    public void setNewReleasesMovieList(List<Movie> newReleasesMovieList) {
+        this.newReleasesMovieList = newReleasesMovieList;
         if (itemRecyclerAdapter != null)
-            itemRecyclerAdapter.setMovieList(discoverMovieList);
+            itemRecyclerAdapter.setMovieList(newReleasesMovieList);
+        notifyDataSetChanged();
+    }
+
+    public void setComedyMovieList(List<Movie> comedyMovieList) {
+        this.comedyMovieList = comedyMovieList;
+        if (itemRecyclerAdapter != null)
+            itemRecyclerAdapter.setMovieList(comedyMovieList);
         notifyDataSetChanged();
     }
 
