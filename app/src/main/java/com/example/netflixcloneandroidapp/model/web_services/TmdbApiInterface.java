@@ -1,6 +1,6 @@
 package com.example.netflixcloneandroidapp.model.web_services;
 
-import com.example.netflixcloneandroidapp.model.entities.TrendingNow;
+import com.example.netflixcloneandroidapp.model.entities.MovieRequestResponse;
 
 import java.util.Map;
 
@@ -14,7 +14,7 @@ public interface TmdbApiInterface {
     // Trending Now     == TODO == Add {media_type}/{time_window}
     // https://api.themoviedb.org/3/trending/all/day?api_key={api_key}
     @GET("trending/all/day")
-    Call<TrendingNow> trendingNowCall(
+    Call<MovieRequestResponse> trendingNowCall(
             @Query("api_key") String key
     );
 
@@ -22,5 +22,5 @@ public interface TmdbApiInterface {
     // https://api.themoviedb.org/3/discover/movie
     // ?api_key={api_key}&sort_by=release_date.desc&release_date.lte=2021-12-04
     @GET("discover/movie")
-    Call<TrendingNow> discoverMovieCall(@QueryMap Map<String, String> parameters);
+    Call<MovieRequestResponse> discoverMovieCall(@QueryMap Map<String, String> parameters);
 }

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class TrendingNow {
+public class MovieRequestResponse {
 
     private int page;
 
@@ -20,7 +20,7 @@ public class TrendingNow {
 
     @Override
     public String toString() {
-        return "TrendingNow{" +
+        return "MovieRequestResponse{" +
                 "page=" + page +
                 ", movies=" + movies +
                 ", total_pages=" + total_pages +

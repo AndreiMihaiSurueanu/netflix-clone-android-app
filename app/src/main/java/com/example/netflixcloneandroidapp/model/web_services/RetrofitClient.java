@@ -1,7 +1,7 @@
 package com.example.netflixcloneandroidapp.model.web_services;
 
 import com.example.netflixcloneandroidapp.model.entities.Movie;
-import com.example.netflixcloneandroidapp.model.entities.TrendingNow;
+import com.example.netflixcloneandroidapp.model.entities.MovieRequestResponse;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -35,7 +35,7 @@ public class RetrofitClient {
     public List<Movie> loadTrendingNow() throws IOException {
 
         Response response = tmdbApiInterface.trendingNowCall(ApiConfig.API_KEY).execute();
-        return ((TrendingNow) response.body()).getMovies();
+        return ((MovieRequestResponse) response.body()).getMovies();
 
     }
 
@@ -47,7 +47,7 @@ public class RetrofitClient {
         parameters.put("primary_release_date.lte", "2021-12-04");
 
         Response response = tmdbApiInterface.discoverMovieCall(parameters).execute();
-        return ((TrendingNow) response.body()).getMovies();
+        return ((MovieRequestResponse) response.body()).getMovies();
 
     }
 
@@ -62,7 +62,7 @@ public class RetrofitClient {
         parameters.put("with_genres", "35");
 
         Response response = tmdbApiInterface.discoverMovieCall(parameters).execute();
-        return ((TrendingNow) response.body()).getMovies();
+        return ((MovieRequestResponse) response.body()).getMovies();
 
     }
 
