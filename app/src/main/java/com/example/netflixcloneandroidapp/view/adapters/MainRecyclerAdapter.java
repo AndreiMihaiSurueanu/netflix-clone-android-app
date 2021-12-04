@@ -18,8 +18,9 @@ import java.util.List;
 public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapter.MainRecyclerViewHolder>{
 
     Context context;
-    List<String> listOfCategories;
     List<Movie> movieList;
+    List<String> listOfCategories;
+    CategoryRowItemRecyclerAdapter itemRecyclerAdapter;
 
     public MainRecyclerAdapter(Context context, List<String> listOfCategories, List<Movie> movieList) {
         this.context = context;
@@ -47,6 +48,13 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
         return listOfCategories.size();
     }
 
+    public void setMovieList(List<Movie> movieList) {
+        this.movieList = movieList;
+        if (itemRecyclerAdapter != null)
+            itemRecyclerAdapter.setMovieList(movieList);
+        notifyDataSetChanged();
+    }
+
     public class MainRecyclerViewHolder extends RecyclerView.ViewHolder {
 
         TextView categoryTitle;
@@ -63,7 +71,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
 
     private void setCatItemRecycler(RecyclerView recyclerView, List<Movie> categoryItemList){
 
-        CategoryRowItemRecyclerAdapter itemRecyclerAdapter = new CategoryRowItemRecyclerAdapter(context, categoryItemList);
+        itemRecyclerAdapter = new CategoryRowItemRecyclerAdapter(context, categoryItemList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(itemRecyclerAdapter);
