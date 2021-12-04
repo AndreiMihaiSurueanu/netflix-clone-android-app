@@ -37,7 +37,7 @@ public class CategoryRowItemRecyclerAdapter extends RecyclerView.Adapter<Categor
     @Override
     public void onBindViewHolder(@NonNull CategoryRowItemRecyclerViewHolder holder, int position) {
         Glide.with(holder.itemView.getContext())
-                .load("https://image.tmdb.org/t/p/w500" + movieList.get(position).getBackdrop_path())
+                .load("https://image.tmdb.org/t/p/w500" + movieList.get(position).getPoster_path())
                 .into(holder.itemImage);
 
     }
