@@ -1,4 +1,32 @@
 <resources>
     <string name="app_name">NetflixCloneAndroidApp</string>
     <string name="category_title">Category Title Placeholder</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_available_for_download">Available for Download</string>
+    <string name="notifications">Notifications</string>
+    <string name="netflix_originals">Netflix Originals</string>
+    <string name="tv_shows">TV Shows</string>
+    <string name="action_adventure"><![CDATA[Action & Adventure]]></string>
+    <string name="anime">Anime</string>
+    <string name="my_downloads">My Downloads</string>
+    <string name="my_list">My List</string>
+    <string name="children_family_movies"><![CDATA[Children & Family Movies]]></string>
+    <string name="classic_movies">Classic Movies</string>
+    <string name="comedies">Comedies</string>
+    <string name="documentaries">Documentaries</string>
+    <string name="dramas">Dramas</string>
+    <string name="horror_movies">Horror Movies</string>
+    <string name="independent_movies">Independent Movies</string>
+    <string name="international_movies">International Movies</string>
+    <string name="romantic_movies">Romantic Movies</string>
+    <string name="sci_fi_fantasy"><![CDATA[Sci-Fi & Fantasy]]></string>
+    <string name="thrillers">Thrillers</string>
+    <string name="audio_description">Audio Description</string>
+    <string name="app_settings">App Settings</string>
+    <string name="account">Account</string>
+    <string name="privacy">Privacy</string>
+    <string name="cookie_preferences">Cookie Preferences</string>
+    <string name="call_help_center">Call Help Center</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="about">About</string>
 </resources>

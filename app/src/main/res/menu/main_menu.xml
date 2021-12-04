@@ -1,0 +1,96 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/app_quick_actions">
+        <item
+            android:id="@+id/nav_notifications"
+            android:icon="@drawable/ic_baseline_notifications_24"
+            android:title="@string/notifications" />
+        <item
+            android:id="@+id/nav_my_download"
+            android:icon="@drawable/ic_baseline_download_24"
+            android:title="@string/my_downloads" />
+        <item
+            android:id="@+id/nav_my_list"
+            android:icon="@drawable/ic_baseline_done_24"
+            android:title="@string/my_list" />
+    </group>
+
+    <group android:id="@+id/app_categories">
+        <item
+            android:id="@+id/nav_home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_download"
+            android:title="@string/menu_available_for_download" />
+        <item
+            android:id="@+id/nav_originals"
+            android:title="@string/netflix_originals" />
+        <item
+            android:id="@+id/nav_shows"
+            android:title="@string/tv_shows" />
+        <item
+            android:id="@+id/nav_action_adventure"
+            android:title="@string/action_adventure" />
+        <item
+            android:id="@+id/nav_family"
+            android:title="@string/children_family_movies" />
+        <item
+            android:id="@+id/nav_classic"
+            android:title="@string/classic_movies" />
+        <item
+            android:id="@+id/nav_comedies"
+            android:title="@string/comedies" />
+        <item
+            android:id="@+id/nav_documentaries"
+            android:title="@string/documentaries" />
+        <item
+            android:id="@+id/nav_dramas"
+            android:title="@string/dramas" />
+        <item
+            android:id="@+id/nav_horror"
+            android:title="@string/horror_movies" />
+        <item
+            android:id="@+id/nav_independent"
+            android:title="@string/independent_movies" />
+        <item
+            android:id="@+id/nav_international"
+            android:title="@string/international_movies" />
+        <item
+            android:id="@+id/nav_romantic"
+            android:title="@string/romantic_movies" />
+        <item
+            android:id="@+id/nav_fantasy"
+            android:title="@string/sci_fi_fantasy" />
+        <item
+            android:id="@+id/nav_thrillers"
+            android:title="@string/thrillers" />
+        <item
+            android:id="@+id/nav_audio_description"
+            android:title="@string/audio_description" />
+    </group>
+
+    <group android:id="@+id/app_settings">
+        <item
+            android:id="@+id/nav_app_settings"
+            android:title="@string/app_settings" />
+        <item
+            android:id="@+id/nav_account"
+            android:title="@string/account" />
+        <item
+            android:id="@+id/nav_privacy"
+            android:title="@string/privacy" />
+        <item
+            android:id="@+id/nav_cookies"
+            android:title="@string/cookie_preferences" />
+        <item
+            android:id="@+id/nav_help"
+            android:title="@string/call_help_center" />
+        <item
+            android:id="@+id/nav_sign_out"
+            android:title="@string/sign_out" />
+        <item
+            android:id="@+id/nav_about"
+            android:title="@string/about" />
+    </group>
+
+</menu>
