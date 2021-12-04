@@ -16,4 +16,8 @@ public class MainViewModel extends ViewModel {
         this.moviesRepository = MoviesRepository.getInstance();
     }
 
+    public LiveData<List<Movie>> getTrendingNow() {
+        return moviesRepository.getTrendingNow();
+    }
+
 }

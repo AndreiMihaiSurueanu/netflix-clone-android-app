@@ -1,5 +1,6 @@
 package com.example.netflixcloneandroidapp.model;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.netflixcloneandroidapp.model.entities.Movie;
@@ -24,6 +25,11 @@ public class MoviesRepository {
             instance = new MoviesRepository();
         }
         return instance;
+    }
+
+    public LiveData<List<Movie>> getTrendingNow() {
+        trendingNowMovies.setValue(retrofitClient.getTrendingNow());
+        return trendingNowMovies;
     }
 
 }
