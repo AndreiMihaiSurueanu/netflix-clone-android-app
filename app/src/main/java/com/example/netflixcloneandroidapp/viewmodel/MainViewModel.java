@@ -30,8 +30,8 @@ public class MainViewModel extends AndroidViewModel {
             @Override
             public void run() {
                 try {
-                    moviesRepository.loadTrendingNow();
                     moviesRepository.loadNewReleases();
+                    moviesRepository.loadTrendingNow();
                     moviesRepository.loadComedyMovies();
                 } catch (IOException e) {
                     e.printStackTrace();

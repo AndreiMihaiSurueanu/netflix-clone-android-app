@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
         setMainCategoryRecycler(movieCategoryList);
 
-        ObserveTrendingNow();
         ObserveNewReleases();
+        ObserveTrendingNow();
         ObserveComedyMovies();
 
         mainViewModel.loadMovies();
