@@ -1,5 +1,6 @@
 package com.example.netflixcloneandroidapp.view.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.netflixcloneandroidapp.R;
 import com.example.netflixcloneandroidapp.model.entities.Movie;
+import com.example.netflixcloneandroidapp.view.adapters.CategoryRowItemRecyclerAdapter;
 import com.example.netflixcloneandroidapp.view.adapters.MainRecyclerAdapter;
 import com.example.netflixcloneandroidapp.viewmodel.MainViewModel;
 
@@ -66,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
 
         mainViewModel.loadMovies();
 
+        OpenMovieListener();
+
     }
 
     private void ObserveTrendingNow() {
@@ -112,5 +116,16 @@ public class MainActivity extends AppCompatActivity {
         mainRecyclerAdapter = new MainRecyclerAdapter(this, allCategoryList);
         mainRecyclerView.setAdapter(mainRecyclerAdapter);
 
+    }
+
+    private void OpenMovieListener() {
+            mainRecyclerAdapter.setOnItemClickListener(new CategoryRowItemRecyclerAdapter.OnMovieListener() {
+            @Override
+            public void onItemClick(Movie movie) {
+                Intent intent = new Intent(MainActivity.this, MovieDetails.class);
+                intent.putExtra("movie", movie);
+                startActivity(intent);
+            }
+        });
     }
 }
