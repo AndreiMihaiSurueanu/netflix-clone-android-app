@@ -19,6 +19,7 @@ public class CategoryRowItemRecyclerAdapter extends RecyclerView.Adapter<Categor
 
     Context context;
     List<Movie> movieList;
+    OnMovieListener movieListener;
 
     public CategoryRowItemRecyclerAdapter(Context context, List<Movie> movieList) {
         this.context = context;
@@ -62,5 +63,13 @@ public class CategoryRowItemRecyclerAdapter extends RecyclerView.Adapter<Categor
             itemImage = itemView.findViewById(R.id.item_image);
 
         }
+    }
+
+    public interface OnMovieListener {
+        void onItemClick(Movie movie);
+    }
+
+    public void setOnItemClickListener(OnMovieListener movieListener) {
+        this.movieListener = movieListener;
     }
 }
