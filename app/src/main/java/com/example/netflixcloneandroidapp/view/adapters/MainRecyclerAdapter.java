@@ -24,6 +24,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     List<Movie> comedyMovieList = new ArrayList<>();
     List<String> listOfCategories;
     CategoryRowItemRecyclerAdapter itemRecyclerAdapter;
+    CategoryRowItemRecyclerAdapter.OnMovieListener movieListener;
 
     public MainRecyclerAdapter(Context context, List<String> listOfCategories) {
         this.context = context;
@@ -93,9 +94,14 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     private void setCatItemRecycler(RecyclerView recyclerView, List<Movie> categoryItemList){
 
         itemRecyclerAdapter = new CategoryRowItemRecyclerAdapter(context, categoryItemList);
+        itemRecyclerAdapter.setOnItemClickListener(movieListener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(itemRecyclerAdapter);
 
+    }
+
+    public void setOnItemClickListener(CategoryRowItemRecyclerAdapter.OnMovieListener movieListener) {
+        this.movieListener = movieListener;
     }
 }
