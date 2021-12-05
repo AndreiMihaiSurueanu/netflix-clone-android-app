@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="netflix_theme">#363636</color>
     <color name="netflix_theme_variant">#363636</color>
+    <color name="movie_details">#03A9F4</color>
 </resources>
