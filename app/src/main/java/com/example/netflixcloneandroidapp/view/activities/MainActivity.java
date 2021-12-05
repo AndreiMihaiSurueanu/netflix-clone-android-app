@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.netflixcloneandroidapp.R;
 import com.example.netflixcloneandroidapp.model.entities.Movie;
+import com.example.netflixcloneandroidapp.model.entities.MovieCategory;
 import com.example.netflixcloneandroidapp.view.adapters.CategoryRowItemRecyclerAdapter;
 import com.example.netflixcloneandroidapp.view.adapters.MainRecyclerAdapter;
 import com.example.netflixcloneandroidapp.viewmodel.MainViewModel;
@@ -34,33 +35,32 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        List<String> listOfCategories = new ArrayList();
-        listOfCategories.add("New Releases");
-        listOfCategories.add("Trending Now");
-        listOfCategories.add("My List");
-        listOfCategories.add("NETFLIX ORIGINALS");
-        listOfCategories.add("Continue Watching for Malcolm");
-        listOfCategories.add("Watch It Again");
-        listOfCategories.add("Comedies");
-        listOfCategories.add("TV Shows");
-        listOfCategories.add("Crime TV Shows");
-        listOfCategories.add("Critically-acclaimed Movies");
-        listOfCategories.add("Because you watched White Chicks");
-        listOfCategories.add("Because you watched RV");
-        listOfCategories.add("Because you watched The Flash");
-        listOfCategories.add("Because you watched Kevin Heart I'm a Grown Little Man");
-        listOfCategories.add("Because you added Inglorious Bastards to your list");
-        listOfCategories.add("Animation");
-        listOfCategories.add("Suspenseful Movies");
-        listOfCategories.add("Binge-worthy TV Shows");
-        listOfCategories.add("Violent Movies");
-        listOfCategories.add("Family Comedies");
-        listOfCategories.add("TV Action & Adventure");
-        listOfCategories.add("TV Sci-Fi & Horror");
-        listOfCategories.add("Irreverent Comedies");
-        listOfCategories.add("Irreverent Movies");
+        List<MovieCategory> movieCategoryList = new ArrayList<>();
+        movieCategoryList.add( new MovieCategory("New Releases", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Trending Now", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("My List", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("NETFLIX ORIGINALS", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Continue Watching for Malcolm", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Watch It Again", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Comedies", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("TV Shows", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Crime TV Shows", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Critically-acclaimed Movies", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Because you watched White Chicks", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Because you watched The Flash", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Because you watched Kevin Heart I'm a Grown Little Man", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Because you added Inglorious Bastards to your list", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Animation", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Suspenseful Movies", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Binge-worthy TV Shows", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Violent Movies", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Family Comedies", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("TV Action & Adventure", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("TV Sci-Fi & Horror", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Irreverent Comedies", new ArrayList<>()));
+        movieCategoryList.add( new MovieCategory("Irreverent Movies", new ArrayList<>()));
 
-        setMainCategoryRecycler(listOfCategories);
+        setMainCategoryRecycler(movieCategoryList);
 
         ObserveTrendingNow();
         ObserveNewReleases();
@@ -108,12 +108,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void setMainCategoryRecycler(List<String> allCategoryList){
+    private void setMainCategoryRecycler(List<MovieCategory> allMovieCategoryList){
 
         mainRecyclerView = findViewById(R.id.main_recycler);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         mainRecyclerView.setLayoutManager(layoutManager);
-        mainRecyclerAdapter = new MainRecyclerAdapter(this, allCategoryList);
+        mainRecyclerAdapter = new MainRecyclerAdapter(this, allMovieCategoryList);
         mainRecyclerView.setAdapter(mainRecyclerAdapter);
 
     }
