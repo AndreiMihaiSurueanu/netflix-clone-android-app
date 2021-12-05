@@ -12,23 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.netflixcloneandroidapp.R;
 import com.example.netflixcloneandroidapp.model.entities.Movie;
+import com.example.netflixcloneandroidapp.model.entities.MovieCategory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapter.MainRecyclerViewHolder>{
 
     Context context;
-    List<Movie> trendingNowList = new ArrayList<>();
-    List<Movie> newReleasesMovieList = new ArrayList<>();
-    List<Movie> comedyMovieList = new ArrayList<>();
-    List<String> listOfCategories;
+    List<MovieCategory> listOfMovieCategories;
     CategoryRowItemRecyclerAdapter itemRecyclerAdapter;
     CategoryRowItemRecyclerAdapter.OnMovieListener movieListener;
 
-    public MainRecyclerAdapter(Context context, List<String> listOfCategories) {
+    public MainRecyclerAdapter(Context context, List<MovieCategory> listOfMovieCategories) {
         this.context = context;
-        this.listOfCategories = listOfCategories;
+        this.listOfMovieCategories = listOfMovieCategories;
     }
 
     @NonNull
@@ -42,38 +39,27 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MainRecyclerViewHolder holder, int position) {
-        holder.categoryTitle.setText(listOfCategories.get(position));
-        if(listOfCategories.get(position) == "New Releases")
-            setCatItemRecycler(holder.categoryRowRecycler, newReleasesMovieList);
-        if(listOfCategories.get(position) == "Trending Now")
-            setCatItemRecycler(holder.categoryRowRecycler, trendingNowList);
-        if(listOfCategories.get(position) == "Comedies")
-            setCatItemRecycler(holder.categoryRowRecycler, comedyMovieList);
+        holder.categoryTitle.setText(listOfMovieCategories.get(position).getCategoryTitle());
+        setCatItemRecycler(holder.categoryRowRecycler, listOfMovieCategories.get(position).getCategoryMovieList());
     }
 
     @Override
     public int getItemCount() {
-        return listOfCategories.size();
+        return listOfMovieCategories.size();
     }
 
     public void setTrendingNowList(List<Movie> trendingNowList) {
-        this.trendingNowList = trendingNowList;
-        if (itemRecyclerAdapter != null)
-            itemRecyclerAdapter.setMovieList(trendingNowList);
+        listOfMovieCategories.get(1).setCategoryMovieList(trendingNowList);
         notifyDataSetChanged();
     }
 
     public void setNewReleasesMovieList(List<Movie> newReleasesMovieList) {
-        this.newReleasesMovieList = newReleasesMovieList;
-        if (itemRecyclerAdapter != null)
-            itemRecyclerAdapter.setMovieList(newReleasesMovieList);
+        listOfMovieCategories.get(0).setCategoryMovieList(newReleasesMovieList);
         notifyDataSetChanged();
-    }
+   }
 
     public void setComedyMovieList(List<Movie> comedyMovieList) {
-        this.comedyMovieList = comedyMovieList;
-        if (itemRecyclerAdapter != null)
-            itemRecyclerAdapter.setMovieList(comedyMovieList);
+        listOfMovieCategories.get(6).setCategoryMovieList(comedyMovieList);
         notifyDataSetChanged();
     }
 
