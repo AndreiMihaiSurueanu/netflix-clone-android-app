@@ -62,6 +62,16 @@ public class CategoryRowItemRecyclerAdapter extends RecyclerView.Adapter<Categor
 
             itemImage = itemView.findViewById(R.id.item_image);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (movieListener != null && position != RecyclerView.NO_POSITION) {
+                        movieListener.onItemClick(movieList.get(position));
+                    }
+                }
+            });
+
         }
     }
 
